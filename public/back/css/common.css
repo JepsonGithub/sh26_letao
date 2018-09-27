@@ -114,6 +114,7 @@ ul {
   background-color: #3C8DBC;
   padding-left: 180px;
   transition: all 1s;
+  z-index: 666;
 }
 .lt_topbar.hidemenu {
   padding-left: 0;
@@ -130,7 +131,6 @@ ul {
 .lt_main {
   padding-left: 180px;
   padding-top: 50px;
-  background-color: pink;
   height: 1000px;
   transition: all 1s;
 }
@@ -139,4 +139,11 @@ ul {
 }
 .lt_main .breadcrumb {
   margin-top: 20px;
+}
+
+.echarts_1,
+.echarts_2 {
+  width: 48%;
+  height: 400px;
+  /*background-color: skyblue;*/
 }
