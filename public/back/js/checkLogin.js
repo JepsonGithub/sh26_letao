@@ -7,7 +7,7 @@ $.ajax({
   url: "/employee/checkRootLogin",
   dataType: "json",
   success: function( info ) {
-    console.log( info );
+    //console.log( info );
     if ( info.error === 400 ) {
       // 未登录, 拦截到登陆页
       location.href = "login.html";

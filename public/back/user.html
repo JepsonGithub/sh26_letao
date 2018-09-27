@@ -80,15 +80,16 @@
         </thead>
         <tbody>
           <!-- 多行操作: 滚轮往下, 选中多行, ctrl + shift + -> 选中单个词 -->
-          <tr>
-            <td>1</td>
-            <td>itcast</td>
-            <td>15102324243</td>
-            <td>正常</td>
-            <td><button class="btn btn-danger">禁用</button></td>
-          </tr>
+          <!-- 挖个坑 -->
         </tbody>
       </table>
+
+
+      <div class="text-right">
+        <!-- 3.x 的版本需要准备 ul -->
+        <ul id="paginator"></ul>
+      </div>
+
 
     </div>
 
@@ -123,6 +124,33 @@
   </div>
 </div>
 
+<!-- 准备模板 -->
+<!-- type 类型写成 text/html 和 text/template 都可以说明, 该script为模板 -->
+<script type="text/html" id="tpl">
+  {{ each rows v i }}
+    <tr>
+      <td>{{ i + 1 + (page-1) * size }}</td>
+      <td>{{ v.username }}</td>
+      <td>{{ v.mobile }}</td>
+      <!-- isDelete 标记当前用户的状态
+           如果为 1, 已启用
+           如果为 0, 已禁用
+      -->
+      <td>{{ v.isDelete === 1 ? "正常" : "已禁用" }}</td>
+
+      <td>
+        {{ if v.isDelete === 1 }}
+          <button class="btn btn-danger">禁用</button>
+        {{ /if }}
+
+        {{ if v.isDelete === 0 }}
+          <button class="btn btn-success">启用</button>
+        {{ /if }}
+      </td>
+    </tr>
+  {{ /each }}
+</script>
+
 
 
 
@@ -130,8 +158,11 @@
 <script src="./lib/bootstrap/js/bootstrap.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/checkLogin.js"></script>
 <script src="./js/common.js"></script>
+<script src="./js/user.js"></script>
 
 </body>
 </html>
