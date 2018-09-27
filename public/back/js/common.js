@@ -64,5 +64,26 @@ $(function() {
     $('#logoutModal').modal("show");
   });
 
+  $('#logoutBtn').click(function() {
+    // 退出功能, 应该调用后台提供的接口, 在服务器端销毁该用户的登陆状态
+    //location.href = "login.html";
+    $.ajax({
+      type: "get",
+      url: "/employee/employeeLogout",
+      dataType: "json",
+      success: function( info ) {
+        if ( info.success ) {
+          // 退出成功, 跳转到登陆页
+          location.href = "login.html";
+        }
+      }
+    })
+  });
+
+
+
+
+
+
 
 })
