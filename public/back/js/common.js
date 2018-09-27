@@ -30,12 +30,39 @@ $(document).ajaxStart(function() {
 });
 
 $(document).ajaxStop(function() {
-
   // 模拟网络延迟
   setTimeout(function() {
     // 关闭进度条
     NProgress.done();
   }, 500);
-
 });
 
+
+
+// 公共的效果
+// 1. 二级菜单切换效果
+// 2. 左侧菜单栏切换
+// 3. 退出功能
+$(function() {
+
+  // 1. 二级菜单切换效果
+  $('.lt_aside .category').click(function() {
+    $(".lt_aside .child").stop().slideToggle();
+  });
+
+  // 2. 左侧菜单栏切换
+  $('.icon_menu').click(function() {
+    $('.lt_aside').toggleClass("hidemenu");
+    $('.lt_topbar').toggleClass("hidemenu");
+    $('.lt_main').toggleClass("hidemenu");
+  });
+
+
+  // 3. 点击右侧退出, 显示模态框
+  $('.icon_logout').click(function() {
+    // 通过找到模态框, 调用 modal("show") 可以显示模态框, hide 隐藏
+    $('#logoutModal').modal("show");
+  });
+
+
+})

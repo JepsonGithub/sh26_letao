@@ -32,6 +32,10 @@ ul {
   margin-top: 150px;
 }
 
+.red {
+  color: #A94442;
+}
+
 
 /* 侧边栏样式 */
 .lt_aside {
@@ -42,7 +46,13 @@ ul {
   height: 100%;
   background-color: #222D32;
   z-index: 999;
+  transition: all 1s;
 }
+.lt_aside.hidemenu {
+  left: -180px;
+}
+
+
 .lt_aside .brand {
   width: 180px;
   height: 50px;
@@ -103,6 +113,10 @@ ul {
   height: 50px;
   background-color: #3C8DBC;
   padding-left: 180px;
+  transition: all 1s;
+}
+.lt_topbar.hidemenu {
+  padding-left: 0;
 }
 .lt_topbar a {
   width: 50px;
@@ -118,6 +132,10 @@ ul {
   padding-top: 50px;
   background-color: pink;
   height: 1000px;
+  transition: all 1s;
+}
+.lt_main.hidemenu {
+  padding-left: 0;
 }
 .lt_main .breadcrumb {
   margin-top: 20px;
