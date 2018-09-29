@@ -54,7 +54,59 @@ $(function() {
   $('#addBtn').click(function() {
     // 显示添加模态框
     $('#addModal').modal("show");
-  })
+  });
+
+
+  // 3. 通过表单校验插件, 实现表单校验功能
+  $('#form').bootstrapValidator({
+    // 配置图标
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',      // 校验成功
+      invalid: 'glyphicon glyphicon-remove',   // 校验失败
+      validating: 'glyphicon glyphicon-refresh'  // 校验中
+    },
+
+    // 配置校验字段
+    fields: {
+      categoryName: {
+        // 配置校验规则
+        validators: {
+          // 非空校验
+          notEmpty: {
+            message: "请输入一级分类名称"
+          }
+        }
+      }
+    }
+  });
+
+
+  // 4. 注册表单校验成功事件, 阻止校验成功时的默认提交, 通过ajax提交
+  $('#form').on("success.form.bv", function( e ) {
+    // 阻止默认行为
+    e.preventDefault();
+
+    // 通过 ajax 提交
+    $.ajax({
+      type: "post",
+      url: "/category/addTopCategory",
+      data: $('#form').serialize(),
+      dataType: "json",
+      success: function( info ) {
+        console.log( info );
+        if ( info.success ) {
+          // 关闭模态框
+          $('#addModal').modal("hide");
+          // 重新渲染第一页面
+          currentPage = 1;
+          render();
+          // 表单内容和校验状态都要重置, resetForm传 true 才将内容和状态都重置
+          $('#form').data("bootstrapValidator").resetForm(true);
+        }
+      }
+    })
+
+  });
 
 
 
