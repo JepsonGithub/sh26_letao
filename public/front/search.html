@@ -41,30 +41,7 @@
 
         <!-- 历史记录 -->
         <div class="lt_history">
-          <div class="title">
-            <span class="mui-pull-left">搜索历史</span>
-            <span class="mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>
-          </div>
-          <div class="content">
-            <ul>
-              <li>
-                <a class="mui-pull-left" href="#">耐克王</a>
-                <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-              </li>
-              <li>
-                <a class="mui-pull-left" href="#">耐克王</a>
-                <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-              </li>
-              <li>
-                <a class="mui-pull-left" href="#">耐克王</a>
-                <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-              </li>
-              <li>
-                <a class="mui-pull-left" href="#">耐克王</a>
-                <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-              </li>
-            </ul>
-          </div>
+          <!-- 挖个巨坑 -->
         </div>
 
       </div>
@@ -104,11 +81,35 @@
   </div>
 </div>
 
+<script type="text/html" id="history_tpl">
+  {{ if arr.length == 0 }}
+    <p>没有更多数据了</p>
+  {{ else }}
+    <div class="title">
+      <span class="mui-pull-left">搜索历史</span>
+      <span class="mui-pull-right icon_empty"><i class="fa fa-trash"></i>清空记录</span>
+    </div>
+    <div class="content">
+      <ul>
+        {{ each arr v i }}
+        <li>
+          <a class="mui-pull-left" href="#">{{ v }}</a>
+          <i data-index="{{ i }}" class="icon_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+        </li>
+        {{ /each }}
+      </ul>
+    </div>
+  {{ /if }}
+</script>
+
 
 
 
 <script src="./lib/mui/js/mui.js"></script>
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/common.js"></script>
+<script src="./js/search.js"></script>
 
 </body>
 </html>
