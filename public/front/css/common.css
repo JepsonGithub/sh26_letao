@@ -100,3 +100,49 @@ img {
   /* 注意: 由于mui区域滚动是通过定位实现的, 通过定位撑满的父容器 */
   position: relative;
 }
+
+
+
+/* 公共的搜索框样式 */
+.lt_search {
+  padding: 10px;
+  position: relative;
+}
+.lt_search .search_input {
+  margin: 0;
+  height: 34px;
+  font-size: 12px;
+  padding-right: 54px;
+  border: 1px solid #007AFF;
+  border-radius: 5px;
+}
+.lt_search .search_btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 0 5px 5px 0;
+}
+
+
+/* 公用的产品样式 */
+.lt_product {
+  padding: 10px;
+}
+.lt_product li {
+  float: left;
+  width: 48%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+}
+.lt_product li:nth-child(2n+1) {
+  margin-right: 4%;
+}
+.lt_product li .price {
+  color: red;
+}
+.lt_product li .oldPrice {
+  text-decoration: line-through;
+}
