@@ -85,7 +85,56 @@ $(function() {
 
     // 重新渲染
     render();
-  })
+  });
+
+
+
+
+  // 功能4: 添加历史记录功能
+  // (1) 给搜索按钮添加点击事件
+  // (2) 获取输入框的内容, 添加到数组的最前面
+  // (3) 将修改后的数组, 存到本地中
+  // (4) 重新渲染
+  $('.search_btn').click(function() {
+    // 获取关键字
+    var key = $('.search_input').val().trim();
+
+    if ( key == "" ) {
+      // 提示用户即可
+      mui.toast("请输入搜索关键字");
+      return;
+    }
+
+    // 将关键字添加到数组最前面
+    var arr = getHistory();
+
+    // 需求:
+    // 1. 如果已经有重复项, 删除重复项
+    // 2. 如果长度超过 10, 删除最后一项(最旧的)
+
+    // 有重复项(index!=-1), 删除重复项
+    var index = arr.indexOf( key );
+    if ( index != -1 ) {
+      // 有重复项, 删掉
+      arr.splice( index, 1 );
+    }
+
+    // 长度不能超过 10
+    if ( arr.length >= 10 ) {
+      arr.pop();
+    }
+
+    arr.unshift( key );
+
+    // 转成 jsonStr, 存储到本地存储中
+    localStorage.setItem( "search_list", JSON.stringify( arr ) );
+
+    // 重新渲染
+    render();
+
+    // 清空搜索框
+    $('.search_input').val("");
+  });
 
 
 
