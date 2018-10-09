@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  /*
+  * cookie, sessionStorage, localStorage 的对比和区别
+  * cookie 特点:
+  *   1. 大小 4 k
+  *   2. 可以在多个窗口共享
+  *   3. 请求时, cookie 中的数据会在请求头中进行携带
+  *   4. 生命周期, 默认会话级别, 可以设置过期时间
+  *
+  * sessionStorage(鸡肋):
+  *   1. 大小 5M
+  *   2. 不能在多个窗口共享
+  *   3. 生命周期, 一旦关闭浏览器, 就释放了
+  *
+  * localStorage特点:
+  *   1. 大小 5 M
+  *   2. 可以在多个窗口共享
+  *   3. 生命周期永久存储, 只要用户不手动删除
+  *
+  *
+  * 需求: 实现搜索历史记录管理
+  * 如果搜索历史记录管理,
+  *   1. 通过在数据库存储实现的, 缺点: 消耗的是服务器的资源, 会增加请求的次数
+  *   2. 通过本地存储实现, 优点: 消耗的是浏览器用户本地的资源, 可以减少请求次数, 减轻服务器压力
+  *
+  * 存个对象 { name: "小红" } 到本地存储中, 再取出来
+  * 1. 本地存储 api:
+  *     localStorage.getItem( key );  // 获取
+  *     localStorage.setItem( key, value ); // 设置
+  *     localStorage.removeItem( key );  // 删除单个
+  *     localStorage.clear();     // 清空全部  慎用, 会将所有的本地都清空
+  *
+  * 2. localStorage存储只能存储字符串格式数据, 以键值对的方式存储数据的
+  *    (1) 存储
+  *        对于复杂数据类型(对象/数组), 先将复杂数据类型转成 jsonStr, 再进行存储
+  *        JSON.stringify(对象);     作用: obj => jsonStr
+  *        localStorage.setItem( key, jsonStr ); 进行存储
+  *
+  *    (2) 读取
+  *        localStorage.getItem( key ); 进行读取, 得到的是 jsonStr
+  *        读取完成需要先转换成 复杂数据类型(对象/数组)
+  *        JSON.parse( jsonStr );    作用: jsonStr => obj
+  * */
+
+
+</script>
+
+
+</body>
+</html>
