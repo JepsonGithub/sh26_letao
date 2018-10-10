@@ -146,3 +146,11 @@ img {
 .lt_product li .oldPrice {
   text-decoration: line-through;
 }
+.lt_product li img {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+}
+.lt_product .mui-ellipsis-2 {
+  height: 40px;
+}
